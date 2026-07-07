@@ -1,0 +1,16 @@
+node_modules
+
+.next
+
+out
+
+dist
+
+.env
+
+.env.local
+
+*.zip
+
+.DS_Store
+
