@@ -9,22 +9,44 @@ const links = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3" aria-label="ADYNTIQ home">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+          aria-label="ADYNTIQ"
+        >
           <Logo />
-          <span className="text-lg font-bold tracking-tight">ADYNTIQ</span>
+          <div>
+            <div className="text-xl font-bold tracking-tight text-slate-900">
+              ADYNTIQ
+            </div>
+            <div className="text-xs uppercase tracking-[0.25em] text-slate-500">
+              AI Consulting
+            </div>
+          </div>
         </Link>
-        <nav className="hidden items-center gap-8 md:flex">
+
+        <nav className="hidden items-center gap-10 md:flex">
           {links.map(([href, label]) => (
-            <Link key={href} href={href} className="text-sm font-medium text-ink/70 hover:text-ink">
+            <Link
+              key={href}
+              href={href}
+              className="text-sm font-semibold tracking-wide text-slate-600 transition hover:text-slate-900"
+            >
               {label}
             </Link>
           ))}
         </nav>
-        <Link href="/contact" className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-soft">
-          Contact sales
+
+        <Link
+          href="/contact"
+          className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-slate-700"
+        >
+          Schedule Consultation
         </Link>
+
       </div>
     </header>
   );
