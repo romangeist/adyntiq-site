@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-inter), ui-sans-serif, system-ui; @apply bg-white text-ink; }
-h1,h2,h3 { font-family: var(--font-sora), ui-sans-serif, system-ui; }
-::selection { background: #dbeafe; }
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: white;
+    color: #0b1220;
+    font-family: var(--font-inter), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-sora), sans-serif;
+}
