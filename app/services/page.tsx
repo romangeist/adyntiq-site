@@ -1,45 +1,52 @@
+import { ServiceIcon } from "@/components/ServiceIcon";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { CTA } from "@/components/CTA";
 
 const services = [
   {
+    icon: "strategy",
     title: "AI Strategy & Roadmaps",
     problem: "Most companies know AI matters but do not know where to start.",
     solution: "We identify high-value use cases, size ROI, prioritize initiatives, and build a practical roadmap.",
     deliverables: ["Use-case discovery", "ROI prioritization", "AI roadmap", "Build-vs-buy guidance"]
   },
   {
+    icon: "automation",
     title: "Workflow Automation",
     problem: "Teams waste hours on repetitive tasks, manual handoffs, and status chasing.",
     solution: "We design AI-enabled workflows that automate intake, routing, approvals, reporting, and QA.",
     deliverables: ["Process mapping", "Automation design", "Workflow implementation", "Performance tracking"]
   },
   {
+    icon: "agents",
     title: "Custom AI Agents",
     problem: "Generic chatbots do not understand your business process.",
     solution: "We build role-specific AI agents for operations, sales, support, research, finance, and knowledge work.",
     deliverables: ["Agent design", "Knowledge integration", "Human-in-the-loop controls", "Deployment support"]
   },
   {
+    icon: "data",
     title: "Data Integration",
     problem: "AI fails when business data is scattered across systems, documents, and spreadsheets.",
     solution: "We connect CRMs, ERPs, documents, databases, APIs, and internal knowledge sources.",
     deliverables: ["System mapping", "Data cleanup", "API integration", "Knowledge architecture"]
   },
   {
+    icon: "implementation",
     title: "Implementation",
     problem: "A prototype is not a business result.",
     solution: "We help move AI solutions from concept to production with testing, governance, rollout, and training.",
     deliverables: ["Prototype build", "Testing plan", "Production rollout", "User training"]
   },
   {
+    icon: "operations",
     title: "AI Operations Transformation",
     problem: "AI tools alone do not change how a company operates.",
     solution: "We redesign operating models so teams can run AI-enabled work reliably and responsibly.",
     deliverables: ["Operating model design", "Governance model", "Adoption plan", "Continuous improvement"]
   }
-];
+] as const;
 
 export default function ServicesPage() {
   return (
@@ -80,7 +87,7 @@ export default function ServicesPage() {
               className="grid gap-8 rounded-3xl border border-black/5 bg-white p-8 shadow-sm md:grid-cols-[1fr_1.5fr]"
             >
               <div>
-                <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-brand to-accent" />
+                <ServiceIcon name={service.icon} />
                 <h3 className="mt-6 text-2xl font-semibold">{service.title}</h3>
               </div>
 

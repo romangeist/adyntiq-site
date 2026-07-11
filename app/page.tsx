@@ -1,16 +1,41 @@
+import { ServiceIcon } from "@/components/ServiceIcon";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { CTA } from "@/components/CTA";
 import { StructuredGraphic } from "@/components/StructuredGraphic";
 
 const valueCards = [
-  ["Strategic AI Roadmaps", "Align AI initiatives with measurable business goals, ROI, and operational priorities."],
-  ["Workflow Automation", "Reduce repetitive manual work and create faster, cleaner business processes."],
-  ["Custom AI Agents", "Build purpose-driven AI agents for research, support, operations, and internal execution."],
-  ["Data Intelligence", "Turn disconnected business information into usable, actionable intelligence."],
-  ["AI Governance", "Deploy AI responsibly with oversight, security, controls, and practical adoption guardrails."],
-  ["Implementation Support", "Move from strategy to production with testing, rollout, training, and optimization."]
-];
+  [
+    "strategy",
+    "Strategic AI Roadmaps",
+    "Align AI initiatives with measurable business goals, ROI, and operational priorities."
+  ],
+  [
+    "automation",
+    "Workflow Automation",
+    "Reduce repetitive manual work and create faster, cleaner business processes."
+  ],
+  [
+    "agents",
+    "Custom AI Agents",
+    "Build purpose-driven AI agents for research, support, operations, and internal execution."
+  ],
+  [
+    "data",
+    "Data Intelligence",
+    "Turn disconnected business information into usable, actionable intelligence."
+  ],
+  [
+    "operations",
+    "AI Governance",
+    "Deploy AI responsibly with oversight, security, controls, and practical adoption guardrails."
+  ],
+  [
+    "implementation",
+    "Implementation Support",
+    "Move from strategy to production with testing, rollout, training, and optimization."
+  ]
+] as const;
 
 const steps = [
   ["01", "Discover", "Understand your business, processes, systems, and operational bottlenecks."],
@@ -80,14 +105,18 @@ export default function HomePage() {
         subtitle="Most AI initiatives fail because they start with tools instead of business problems. We focus on operational value, implementation discipline, and measurable outcomes."
       >
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {valueCards.map(([title, desc]) => (
+          {valueCards.map(([icon, title, desc]) => (
             <div
               key={title}
               className="rounded-3xl border border-black/5 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-soft"
             >
-              <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-brand to-accent" />
+              <ServiceIcon name={icon} />
+
               <h3 className="mt-6 text-xl font-semibold">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-ink/65">{desc}</p>
+
+              <p className="mt-3 text-sm leading-6 text-ink/65">
+                {desc}
+              </p>
             </div>
           ))}
         </div>
