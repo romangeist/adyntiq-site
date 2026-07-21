@@ -9,12 +9,17 @@ export function Footer() {
           <div className="flex items-center gap-3"><Logo /><span className="font-bold">ADYNTIQ</span></div>
           <p className="mt-4 max-w-sm text-sm leading-6 text-ink/65">AI that delivers. Not just predicts. Practical AI strategy, automation, agents, and implementation for growing businesses.</p>
         </div>
-        <div className="grid grid-cols-2 gap-8 text-sm md:col-span-2 md:justify-self-end">
+        <div className="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3 md:col-span-2 md:justify-self-end">
           <div className="grid gap-3">
             <p className="font-semibold">Company</p>
             <Link className="text-ink/65 hover:text-ink" href="/about">About</Link>
             <Link className="text-ink/65 hover:text-ink" href="/#services">Services</Link>
             <Link className="text-ink/65 hover:text-ink" href="/contact">Contact</Link>
+          </div>
+          <div className="grid gap-3">
+            <p className="font-semibold">Legal</p>
+            <Link className="text-ink/65 hover:text-ink" href="/privacy">Privacy</Link>
+            <Link className="text-ink/65 hover:text-ink" href="/terms">Terms</Link>
           </div>
           <div className="grid gap-3">
             <p className="font-semibold">Contact</p>

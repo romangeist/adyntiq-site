@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 
@@ -204,9 +205,20 @@ export function ContactForm() {
           />
         </div>
 
-        <p className="text-xs leading-5 text-ink/45">
-          Fields marked with <span aria-hidden="true">*</span> are required.
-        </p>
+        <div className="space-y-1 text-xs leading-5 text-ink/45">
+          <p>Fields marked with <span aria-hidden="true">*</span> are required.</p>
+          <p>
+            By sending this form, you acknowledge our{" "}
+            <Link className="font-semibold text-brand hover:underline" href="/privacy">
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link className="font-semibold text-brand hover:underline" href="/terms">
+              Terms of Use
+            </Link>
+            .
+          </p>
+        </div>
 
         {turnstileEnabled && (
           <div className="grid gap-2">
