@@ -1,12 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import Script from "next/script";
+import { useCallback, useRef, useState } from "react";
+
+type TurnstileOptions = {
+  sitekey: string;
+  action: string;
+  theme: "light";
+  size: "flexible";
+  callback: (token: string) => void;
+  "error-callback": () => void;
+  "expired-callback": () => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: TurnstileOptions) => string;
+      reset: (widgetId?: string) => void;
+    };
+  }
+}
 
 const inputClassName =
   "rounded-2xl border border-black/10 px-4 py-3 text-ink outline-none transition placeholder:text-ink/35 focus:border-brand focus:ring-4 focus:ring-brand/10";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetIdRef = useRef<string>();
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const turnstileEnabled = Boolean(turnstileSiteKey);
+
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken("");
+    if (turnstileWidgetIdRef.current && window.turnstile) {
+      window.turnstile.reset(turnstileWidgetIdRef.current);
+    }
+  }, []);
+
+  const renderTurnstile = useCallback(() => {
+    if (
+      !turnstileSiteKey ||
+      !window.turnstile ||
+      !turnstileContainerRef.current ||
+      turnstileWidgetIdRef.current
+    ) {
+      return;
+    }
+
+    turnstileWidgetIdRef.current = window.turnstile.render(
+      turnstileContainerRef.current,
+      {
+        sitekey: turnstileSiteKey,
+        action: "contact",
+        theme: "light",
+        size: "flexible",
+        callback: setTurnstileToken,
+        "error-callback": () => setTurnstileToken(""),
+        "expired-callback": () => setTurnstileToken("")
+      }
+    );
+  }, [turnstileSiteKey]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,29 +80,53 @@ export function ContactForm() {
           email: formData.get("email"),
           company: formData.get("company"),
           need: formData.get("need"),
-          message: formData.get("message")
+          message: formData.get("message"),
+          website: formData.get("website"),
+          turnstileToken
         })
       });
 
       if (!response.ok) {
+        resetTurnstile();
         setStatus("error");
         return;
       }
 
       setStatus("success");
       form.reset();
+      resetTurnstile();
     } catch {
+      resetTurnstile();
       setStatus("error");
     }
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      aria-busy={status === "sending"}
-      className="rounded-[2rem] border border-black/5 bg-white p-6 shadow-soft md:p-8"
-    >
-      <div className="grid gap-5">
+    <>
+      {turnstileEnabled && (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+          strategy="afterInteractive"
+          onReady={renderTurnstile}
+        />
+      )}
+
+      <form
+        onSubmit={handleSubmit}
+        aria-busy={status === "sending"}
+        className="relative rounded-[2rem] border border-black/5 bg-white p-6 shadow-soft md:p-8"
+      >
+        <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
+        <div className="grid gap-5">
         <div className="grid gap-2">
           <label htmlFor="contact-name" className="text-sm font-semibold text-ink">
             Name <span className="text-brand" aria-hidden="true">*</span>
@@ -56,6 +136,7 @@ export function ContactForm() {
             required
             name="name"
             autoComplete="name"
+            maxLength={100}
             placeholder="Your name"
             className={inputClassName}
           />
@@ -71,6 +152,7 @@ export function ContactForm() {
             type="email"
             name="email"
             autoComplete="email"
+            maxLength={254}
             placeholder="you@company.com"
             className={inputClassName}
           />
@@ -84,6 +166,7 @@ export function ContactForm() {
             id="contact-company"
             name="company"
             autoComplete="organization"
+            maxLength={200}
             placeholder="Company name"
             className={inputClassName}
           />
@@ -112,6 +195,7 @@ export function ContactForm() {
             id="contact-message"
             required
             name="message"
+            maxLength={5000}
             placeholder="Describe the process you want to improve."
             className={`min-h-36 ${inputClassName}`}
           />
@@ -121,9 +205,19 @@ export function ContactForm() {
           Fields marked with <span aria-hidden="true">*</span> are required.
         </p>
 
+        {turnstileEnabled && (
+          <div className="grid gap-2">
+            <div ref={turnstileContainerRef} />
+            <p id="contact-security-note" className="text-xs leading-5 text-ink/45">
+              Protected from automated submissions by Cloudflare Turnstile.
+            </p>
+          </div>
+        )}
+
         <button
           type="submit"
-          disabled={status === "sending"}
+          disabled={status === "sending" || (turnstileEnabled && !turnstileToken)}
+          aria-describedby={turnstileEnabled ? "contact-security-note" : undefined}
           className="rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/25 disabled:cursor-wait disabled:opacity-60"
         >
           {status === "sending" ? "Sending..." : "Send message"}
@@ -140,7 +234,8 @@ export function ContactForm() {
             Something went wrong. Email us directly at sales@adyntiq.com.
           </p>
         )}
-      </div>
-    </form>
+        </div>
+      </form>
+    </>
   );
 }

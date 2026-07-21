@@ -11,15 +11,18 @@ npm run dev
 
 ## Contact form
 
-Uses Resend. Add these environment variables in Vercel:
+Uses Resend for delivery and Cloudflare Turnstile for bot protection. Add these
+environment variables in Vercel:
 
 ```bash
 RESEND_API_KEY=your_key
 CONTACT_TO=sales@adyntiq.com
-CONTACT_FROM=ADYNTIQ Website <verified@adyntiq.com>
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
+TURNSTILE_SECRET_KEY=your_turnstile_secret_key
 ```
 
-During initial Resend setup you can use `onboarding@resend.dev`, but for production verify `adyntiq.com` and use a domain email.
+The Turnstile site key and secret key must be configured together. Restrict the
+production widget to `adyntiq.com` and `www.adyntiq.com`.
 
 ## Deploy
 
