@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 
 type TurnstileOptions = {
@@ -26,6 +27,7 @@ const inputClassName =
   "rounded-2xl border border-black/10 px-4 py-3 text-ink outline-none transition placeholder:text-ink/35 focus:border-brand focus:ring-4 focus:ring-brand/10";
 
 export function ContactForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
@@ -95,6 +97,7 @@ export function ContactForm() {
       setStatus("success");
       form.reset();
       resetTurnstile();
+      router.push("/contact/thank-you");
     } catch {
       resetTurnstile();
       setStatus("error");
