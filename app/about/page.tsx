@@ -1,4 +1,23 @@
+import type { Metadata } from "next";
 import { CTA } from "@/components/CTA";
+
+const description =
+  "Learn how ADYNTIQ helps SMB and mid-market organizations make AI operational through practical strategy, implementation, and adoption.";
+
+export const metadata: Metadata = {
+  title: "About",
+  description,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About ADYNTIQ",
+    description,
+    url: "https://adyntiq.com/about"
+  },
+  twitter: {
+    title: "About ADYNTIQ",
+    description
+  }
+};
 
 const principles = [
   ["Business first", "AI work should start with operational pain, not shiny tools."],

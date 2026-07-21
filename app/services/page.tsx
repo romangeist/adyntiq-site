@@ -1,7 +1,26 @@
 import { ServiceIcon } from "@/components/ServiceIcon";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { CTA } from "@/components/CTA";
+
+const description =
+  "AI strategy, workflow automation, custom AI agents, data integration, implementation, and operations transformation for SMB and mid-market teams.";
+
+export const metadata: Metadata = {
+  title: "AI Services",
+  description,
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "AI Services | ADYNTIQ",
+    description,
+    url: "https://adyntiq.com/services"
+  },
+  twitter: {
+    title: "AI Services | ADYNTIQ",
+    description
+  }
+};
 
 const services = [
   {

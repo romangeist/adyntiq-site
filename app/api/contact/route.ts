@@ -6,11 +6,11 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, company, message } = body;
+    const { name, email, company, need, message } = body;
 
-    if (!name || !email || !message) {
+    if (!name || !email || !need || !message) {
       return NextResponse.json(
-        { error: "Name, email, and message are required." },
+        { error: "Name, email, service, and message are required." },
         { status: 400 }
       );
     }
@@ -35,6 +35,7 @@ export async function POST(req: Request) {
 Name: ${name}
 Email: ${email}
 Company: ${company || "Not provided"}
+Service: ${need}
 
 Message:
 ${message}
