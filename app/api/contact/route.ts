@@ -26,9 +26,9 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey);
 
-    await resend.emails.send({
-      from: "ADYNTIQ Website <onboarding@resend.dev>",
-      to: "sales@adyntiq.com",
+    const { error } = await resend.emails.send({
+      from: "ADYNTIQ Website <website@adyntiq.com>",
+      to: process.env.CONTACT_TO || "sales@adyntiq.com",
       subject: `New ADYNTIQ inquiry from ${name}`,
       replyTo: email,
       text: `
@@ -42,10 +42,28 @@ ${message}
       `
     });
 
+    if (error) {
+      console.error("Resend contact delivery failed:", error.message);
+      return NextResponse.json(
+        {
+          error:
+            "We couldn't send your message. Please email sales@adyntiq.com directly."
+        },
+        { status: 502 }
+      );
+    }
+
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error(
+      "Unexpected contact form error:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
     return NextResponse.json(
-      { error: "Something went wrong." },
+      {
+        error:
+          "We couldn't send your message. Please email sales@adyntiq.com directly."
+      },
       { status: 500 }
     );
   }
