@@ -2,20 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-inter), ui-sans-serif, system-ui; @apply bg-white text-ink; }
+h1,h2,h3 { font-family: var(--font-sora), ui-sans-serif, system-ui; }
+::selection { background: #bfdbfe; color: #0b1220; }
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.2em] text-brand;
+  }
 }
 
-body {
-    margin: 0;
-    background: white;
-    color: #0b1220;
-    font-family: var(--font-inter), sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: var(--font-sora), sans-serif;
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
 }
