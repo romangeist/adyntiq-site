@@ -46,12 +46,12 @@ export default function HomePage() {
     <main id="main-content" tabIndex={-1} className="overflow-hidden">
       <section className="relative isolate bg-slate text-white">
         <div className="hero-grid absolute inset-0 -z-10 opacity-40" />
-        <div className="absolute -right-40 top-[-10rem] -z-10 h-[34rem] w-[34rem] rounded-full bg-brand/25 blur-[120px]" />
-        <div className="absolute -left-40 bottom-[-16rem] -z-10 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-[120px]" />
+        <div className="absolute -right-40 top-[-10rem] -z-10 h-[34rem] w-[34rem] rounded-full bg-brand/25 blur-3xl md:blur-[120px]" />
+        <div className="absolute -left-40 bottom-[-16rem] -z-10 h-[30rem] w-[30rem] rounded-full bg-accent/15 blur-3xl md:blur-[120px]" />
 
         <div className="mx-auto grid min-h-[760px] max-w-7xl gap-14 px-4 py-20 sm:px-6 md:grid-cols-[1.02fr_0.98fr] md:items-center lg:px-8 lg:py-24">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200 backdrop-blur">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200 sm:backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_16px_rgba(34,197,94,0.9)]" />
               AI that delivers. Not just predicts.
             </p>
@@ -213,11 +213,11 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-[2rem] bg-brand px-7 py-10 text-white shadow-[0_30px_90px_rgba(37,99,235,0.22)] sm:px-10 sm:py-14 lg:px-14">
             <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-100">Why ADYNTIQ</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-white">Why ADYNTIQ</p>
                 <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">
                   Business-first by design.
                 </h2>
-                <p className="mt-6 max-w-md text-base leading-7 text-white/70">
+                <p className="mt-6 max-w-md text-base leading-7 text-white">
                   The goal is not to “add AI.” It is to create a better way for your business to operate.
                 </p>
               </div>
@@ -227,7 +227,7 @@ export default function HomePage() {
                   <article key={title} className="bg-brand p-6 sm:p-7">
                     <div className="h-px w-8 bg-accent" />
                     <h3 className="mt-5 text-lg font-semibold">{title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-white/65">{description}</p>
+                    <p className="mt-3 text-sm leading-6 text-white">{description}</p>
                   </article>
                 ))}
               </div>

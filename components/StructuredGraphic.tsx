@@ -3,7 +3,7 @@ const outcomes = ["Faster cycles", "Fewer errors", "Clear insight"];
 
 export function StructuredGraphic() {
   return (
-    <div aria-hidden="true" className="relative mx-auto w-full max-w-[620px] rounded-[2rem] border border-white/10 bg-white/[0.055] p-4 shadow-[0_35px_100px_rgba(0,0,0,0.35)] backdrop-blur sm:p-6">
+    <div aria-hidden="true" className="relative mx-auto w-full max-w-[620px] rounded-[2rem] border border-white/10 bg-white/[0.055] p-4 shadow-[0_35px_100px_rgba(0,0,0,0.35)] sm:p-6 sm:backdrop-blur">
       <div className="flex items-center justify-between border-b border-white/10 pb-4">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
