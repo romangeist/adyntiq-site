@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="bg-gradient-to-br from-white via-mist to-blue-100 py-20">
+    <main id="main-content" tabIndex={-1} className="bg-gradient-to-br from-white via-mist to-blue-100 py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand">
@@ -38,7 +38,7 @@ export default function ContactPage() {
 
           <div className="mt-8 rounded-3xl bg-white/70 p-6 shadow-sm backdrop-blur">
             <p className="text-sm font-bold text-ink">Prefer email?</p>
-            <a className="mt-2 inline-block text-sm font-bold text-brand hover:underline" href="mailto:sales@adyntiq.com">
+            <a className="mt-1 inline-flex min-h-11 items-center text-sm font-bold text-brand hover:underline" href="mailto:sales@adyntiq.com">
               sales@adyntiq.com
             </a>
             <p className="mt-4 text-sm leading-6 text-ink/60">

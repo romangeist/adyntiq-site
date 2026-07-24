@@ -25,7 +25,7 @@ declare global {
 }
 
 const inputClassName =
-  "rounded-2xl border border-black/10 px-4 py-3 text-ink outline-none transition placeholder:text-ink/35 focus:border-brand focus:ring-4 focus:ring-brand/10";
+  "rounded-2xl border border-black/10 px-4 py-3 text-ink outline-none transition placeholder:text-ink/60 focus:border-brand focus:ring-4 focus:ring-brand/20";
 
 export function ContactForm() {
   const router = useRouter();
@@ -120,7 +120,7 @@ export function ContactForm() {
         aria-busy={status === "sending"}
         className="relative rounded-[2rem] border border-black/5 bg-white p-6 shadow-soft md:p-8"
       >
-        <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true" inert>
           <label htmlFor="contact-website">Website</label>
           <input
             id="contact-website"
@@ -164,7 +164,7 @@ export function ContactForm() {
 
         <div className="grid gap-2">
           <label htmlFor="contact-company" className="text-sm font-semibold text-ink">
-            Company <span className="font-normal text-ink/45">(optional)</span>
+            Company <span className="font-normal text-ink/60">(optional)</span>
           </label>
           <input
             id="contact-company"
@@ -205,15 +205,15 @@ export function ContactForm() {
           />
         </div>
 
-        <div className="space-y-1 text-xs leading-5 text-ink/45">
+        <div className="space-y-1 text-xs leading-5 text-ink/60">
           <p>Fields marked with <span aria-hidden="true">*</span> are required.</p>
           <p>
             By sending this form, you acknowledge our{" "}
-            <Link className="font-semibold text-brand hover:underline" href="/privacy">
+            <Link className="inline-flex min-h-6 items-center font-semibold text-brand hover:underline" href="/privacy">
               Privacy Policy
             </Link>{" "}
             and{" "}
-            <Link className="font-semibold text-brand hover:underline" href="/terms">
+            <Link className="inline-flex min-h-6 items-center font-semibold text-brand hover:underline" href="/terms">
               Terms of Use
             </Link>
             .
@@ -223,7 +223,7 @@ export function ContactForm() {
         {turnstileEnabled && (
           <div className="grid gap-2">
             <div ref={turnstileContainerRef} />
-            <p id="contact-security-note" className="text-xs leading-5 text-ink/45">
+            <p id="contact-security-note" className="text-xs leading-5 text-ink/60">
               Protected from automated submissions by Cloudflare Turnstile.
             </p>
           </div>

@@ -69,7 +69,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-mist to-blue-100 py-20 md:py-28">
         <div className="absolute right-[-10rem] top-[-10rem] h-[28rem] w-[28rem] rounded-full bg-brand/10 blur-3xl" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -112,12 +112,12 @@ export default function ServicesPage() {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
-                  <p className="text-sm font-bold uppercase tracking-[0.16em] text-ink/45">
+                  <p className="text-sm font-bold uppercase tracking-[0.16em] text-ink/60">
                     Problem
                   </p>
                   <p className="mt-3 leading-7 text-ink/70">{service.problem}</p>
 
-                  <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-ink/45">
+                  <p className="mt-6 text-sm font-bold uppercase tracking-[0.16em] text-ink/60">
                     Solution
                   </p>
                   <p className="mt-3 leading-7 text-ink/70">{service.solution}</p>

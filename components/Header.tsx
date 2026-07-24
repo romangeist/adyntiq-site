@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
 import { Logo } from "@/components/Logo";
 
 const links = [
@@ -9,11 +12,19 @@ const links = [
 ] as const;
 
 export function Header() {
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+
+  function closeMobileMenu() {
+    if (mobileMenuRef.current) {
+      mobileMenuRef.current.open = false;
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="ADYNTIQ home">
-          <Logo className="h-9 w-9" />
+          <Logo className="h-9 w-9" idPrefix="header-logo" />
           <span className="text-lg font-bold tracking-[-0.02em] text-ink">ADYNTIQ</span>
         </Link>
 
@@ -34,7 +45,7 @@ export function Header() {
           </Link>
         </div>
 
-        <details className="group relative lg:hidden">
+        <details ref={mobileMenuRef} className="group relative lg:hidden">
           <summary className="flex cursor-pointer list-none items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-mist focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand/15 [&::-webkit-details-marker]:hidden">
             Menu
             <span aria-hidden="true" className="relative h-4 w-4">
@@ -46,11 +57,11 @@ export function Header() {
           <div className="absolute right-0 top-[calc(100%+0.75rem)] w-72 overflow-hidden rounded-3xl border border-black/[0.07] bg-white p-3 shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
             <nav aria-label="Mobile navigation" className="grid">
               {links.map(([href, label]) => (
-                <Link key={href} href={href} className="rounded-2xl px-4 py-3 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">
+                <Link key={href} href={href} onClick={closeMobileMenu} className="rounded-2xl px-4 py-3 text-sm font-semibold text-ink/70 transition hover:bg-mist hover:text-ink">
                   {label}
                 </Link>
               ))}
-              <Link href="/contact" className="mt-2 rounded-2xl bg-ink px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand">
+              <Link href="/contact" onClick={closeMobileMenu} className="mt-2 rounded-2xl bg-ink px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand">
                 Book a consultation
               </Link>
             </nav>

@@ -8,9 +8,25 @@ body { font-family: var(--font-inter), ui-sans-serif, system-ui; @apply bg-white
 h1,h2,h3 { font-family: var(--font-sora), ui-sans-serif, system-ui; }
 ::selection { background: #bfdbfe; color: #0b1220; }
 
+@layer base {
+  :where(a, button, summary):focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px #1e40af;
+  }
+}
+
 @layer components {
   .eyebrow {
     @apply text-xs font-bold uppercase tracking-[0.2em] text-brand;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-ink px-5 py-3 text-sm font-bold text-white shadow-xl transition-transform;
+  }
+
+  .skip-link:focus-visible {
+    @apply translate-y-0;
   }
 }
 
@@ -20,4 +36,23 @@ h1,h2,h3 { font-family: var(--font-sora), ui-sans-serif, system-ui; }
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+#main-content {
+  scroll-margin-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

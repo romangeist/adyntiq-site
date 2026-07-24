@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactThankYouPage() {
   return (
-    <main className="bg-gradient-to-br from-white via-mist to-blue-100 py-24 md:py-32">
+    <main id="main-content" tabIndex={-1} className="bg-gradient-to-br from-white via-mist to-blue-100 py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
         <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand">
           Message received

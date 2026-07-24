@@ -43,7 +43,7 @@ const principles = [
 
 export default function HomePage() {
   return (
-    <main className="overflow-hidden">
+    <main id="main-content" tabIndex={-1} className="overflow-hidden">
       <section className="relative isolate bg-slate text-white">
         <div className="hero-grid absolute inset-0 -z-10 opacity-40" />
         <div className="absolute -right-40 top-[-10rem] -z-10 h-[34rem] w-[34rem] rounded-full bg-brand/25 blur-[120px]" />
@@ -79,7 +79,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-xs font-semibold uppercase tracking-[0.12em] text-white/45 sm:grid-cols-4">
+            <div className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-xs font-semibold uppercase tracking-[0.12em] text-white/60 sm:grid-cols-4">
               <span>Strategy</span>
               <span>Automation</span>
               <span>AI agents</span>
@@ -141,7 +141,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="mt-12 text-2xl font-semibold tracking-tight text-ink">{title}</h3>
                 <p className="mt-4 min-h-24 text-sm leading-6 text-ink/60">{description}</p>
-                <p className="mt-6 border-t border-black/[0.06] pt-5 text-xs font-bold uppercase tracking-[0.14em] text-ink/45">
+                <p className="mt-6 border-t border-black/[0.06] pt-5 text-xs font-bold uppercase tracking-[0.14em] text-ink/60">
                   {outcome}
                 </p>
               </article>
@@ -188,7 +188,7 @@ export default function HomePage() {
               <p className="mt-6 text-lg leading-8 text-ink/60">
                 Start with one costly bottleneck. Build the right workflow around it. Measure the result.
               </p>
-              <Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand hover:text-brandDark">
+              <Link href="/contact" className="-mx-3 mt-8 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-bold text-brand hover:text-brandDark">
                 Discuss your workflow <span aria-hidden="true">→</span>
               </Link>
             </div>
