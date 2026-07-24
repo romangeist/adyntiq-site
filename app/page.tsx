@@ -35,6 +35,13 @@ const useCases = [
   ["Task-specific agents", "Deploy controlled agents that research, prepare, monitor, and execute defined tasks."],
 ] as const;
 
+const successMetrics = [
+  ["Cycle time", "How long work takes from intake to completed outcome.", "Faster delivery"],
+  ["Manual effort", "Hours and repetitive steps required to complete the workflow.", "More capacity"],
+  ["Quality", "Errors, rework, exceptions, and escalations that slow the team.", "More reliable work"],
+  ["Adoption", "Whether the people responsible for the process consistently use it.", "Sustained value"],
+] as const;
+
 const principles = [
   ["Outcomes before technology", "Every engagement starts with an operating result—not a tool looking for a use case."],
   ["Built into real operations", "Solutions connect to the systems, data, controls, and people already running the business."],
@@ -205,6 +212,56 @@ export default function HomePage() {
                 </article>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" className="scroll-mt-24 bg-slate py-24 text-white sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+            <div>
+              <p className="eyebrow !text-blue-300">How we measure success</p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">
+                Evidence before expansion.
+              </h2>
+            </div>
+            <p className="max-w-2xl text-lg leading-8 text-white/70">
+              Before implementation, we define the current baseline, the target outcome, and how it will be measured. A solution earns the right to scale by improving the workflow—not by producing an impressive demo.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">
+            {successMetrics.map(([metric, definition, outcome], index) => (
+              <article key={metric} className="bg-slate p-7 sm:p-8">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold tracking-[0.18em] text-blue-300">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="h-2 w-2 rounded-full bg-accent" />
+                </div>
+                <h3 className="mt-10 text-xl font-semibold">{metric}</h3>
+                <p className="mt-3 min-h-24 text-sm leading-6 text-white/70">{definition}</p>
+                <p className="border-t border-white/10 pt-5 text-xs font-bold uppercase tracking-[0.14em] text-blue-200">
+                  {outcome}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-4 rounded-3xl border border-white/10 bg-white/[0.05] p-6 sm:grid-cols-3 sm:p-8">
+            {[
+              ["01", "Baseline", "Document the current process and performance."],
+              ["02", "Target", "Agree on a specific operational improvement."],
+              ["03", "Monitor", "Track results, adoption, and exceptions after launch."],
+            ].map(([number, title, description]) => (
+              <div key={title} className="flex gap-4">
+                <span className="text-xs font-bold text-blue-300">{number}</span>
+                <div>
+                  <h3 className="text-sm font-semibold">{title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-white/65">{description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
