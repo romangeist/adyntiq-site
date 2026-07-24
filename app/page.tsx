@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CTA } from "@/components/CTA";
 import { StructuredGraphic } from "@/components/StructuredGraphic";
+import { TrackedContactLink } from "@/components/TrackedContactLink";
 
 const challenges = [
   ["01", "Manual work slows growth", "Critical processes still depend on copying, routing, checking, and reporting by hand."],
@@ -65,12 +66,12 @@ export default function HomePage() {
             </p>
 
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
+              <TrackedContactLink
+                placement="homepage-hero"
                 className="rounded-full bg-white px-6 py-3.5 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-xl"
               >
                 Book an AI consultation <span aria-hidden="true">→</span>
-              </Link>
+              </TrackedContactLink>
               <Link
                 href="#services"
                 className="rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
@@ -188,9 +189,9 @@ export default function HomePage() {
               <p className="mt-6 text-lg leading-8 text-ink/60">
                 Start with one costly bottleneck. Build the right workflow around it. Measure the result.
               </p>
-              <Link href="/contact" className="-mx-3 mt-8 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-bold text-brand hover:text-brandDark">
+              <TrackedContactLink placement="homepage-use-cases" className="-mx-3 mt-8 inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-bold text-brand hover:text-brandDark">
                 Discuss your workflow <span aria-hidden="true">→</span>
-              </Link>
+              </TrackedContactLink>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">

@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { useRouter } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
 
@@ -96,6 +97,9 @@ export function ContactForm() {
       }
 
       setStatus("success");
+      track("Contact Form Submitted", {
+        service: String(formData.get("need"))
+      });
       form.reset();
       resetTurnstile();
       router.push("/contact/thank-you");

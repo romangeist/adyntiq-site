@@ -1,8 +1,8 @@
 import { ServiceIcon } from "@/components/ServiceIcon";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { CTA } from "@/components/CTA";
+import { TrackedContactLink } from "@/components/TrackedContactLink";
 
 const description =
   "AI strategy, workflow automation, custom AI agents, data integration, implementation, and operations transformation for SMB and mid-market teams.";
@@ -84,12 +84,12 @@ export default function ServicesPage() {
             integrate, and operate practical AI solutions that improve how work gets done.
           </p>
           <div className="mt-8">
-            <Link
-              href="/contact"
+            <TrackedContactLink
+              placement="services-hero"
               className="rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:shadow-soft"
             >
               Contact sales
-            </Link>
+            </TrackedContactLink>
           </div>
         </div>
       </section>

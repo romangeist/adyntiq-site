@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedContactLink } from "@/components/TrackedContactLink";
 
 export function CTA() {
   return (
@@ -16,9 +16,9 @@ export function CTA() {
               Tell us where work is slow, manual, or disconnected. We&apos;ll help you identify the practical path forward.
             </p>
           </div>
-          <Link href="/contact" className="inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-xl">
+          <TrackedContactLink placement="final-cta" className="inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-xl">
             Talk to ADYNTIQ <span aria-hidden="true">→</span>
-          </Link>
+          </TrackedContactLink>
         </div>
       </div>
     </section>

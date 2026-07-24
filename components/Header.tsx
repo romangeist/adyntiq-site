@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { TrackedContactLink } from "@/components/TrackedContactLink";
 
 const links = [
   ["/#services", "Services"],
@@ -37,12 +38,12 @@ export function Header() {
             ))}
           </nav>
 
-          <Link
-            href="/contact"
+          <TrackedContactLink
+            placement="header-desktop"
             className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-brand hover:shadow-lg"
           >
             Book a consultation
-          </Link>
+          </TrackedContactLink>
         </div>
 
         <details ref={mobileMenuRef} className="group relative lg:hidden">
@@ -61,9 +62,9 @@ export function Header() {
                   {label}
                 </Link>
               ))}
-              <Link href="/contact" onClick={closeMobileMenu} className="mt-2 rounded-2xl bg-ink px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand">
+              <TrackedContactLink placement="header-mobile" onClick={closeMobileMenu} className="mt-2 rounded-2xl bg-ink px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand">
                 Book a consultation
-              </Link>
+              </TrackedContactLink>
             </nav>
           </div>
         </details>
