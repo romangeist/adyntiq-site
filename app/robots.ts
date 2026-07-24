@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/api/"]
         },
-        sitemap: "https://adyntiq.com/sitemap.xml",
-        host: "https://adyntiq.com"
+        sitemap: "https://www.adyntiq.com/sitemap.xml",
+        host: "https://www.adyntiq.com"
     };
 }

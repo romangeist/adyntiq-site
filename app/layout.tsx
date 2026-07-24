@@ -17,7 +17,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adyntiq.com"),
+  metadataBase: new URL("https://www.adyntiq.com"),
 
   title: {
     default: "ADYNTIQ | AI Consulting and Automation Services",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adyntiq.com",
+    url: "https://www.adyntiq.com",
     siteName: "ADYNTIQ",
     title: "ADYNTIQ | AI Consulting That Delivers",
     description:
@@ -86,7 +86,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "ADYNTIQ",
-    url: "https://adyntiq.com",
+    url: "https://www.adyntiq.com",
     email: "sales@adyntiq.com",
     description:
       "AI professional services company helping SMB and mid-market organizations transform operations through AI strategy, automation, custom agents, data integration, and implementation.",

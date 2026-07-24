@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About ADYNTIQ",
     description,
-    url: "https://adyntiq.com/about"
+    url: "https://www.adyntiq.com/about"
   },
   twitter: {
     title: "About ADYNTIQ",
