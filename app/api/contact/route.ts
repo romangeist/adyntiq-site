@@ -187,6 +187,39 @@ ${message.trim()}
       );
     }
 
+    try {
+      const { error: confirmationError } = await resend.emails.send({
+        from: "ADYNTIQ <website@adyntiq.com>",
+        to: email.trim(),
+        subject: "We received your ADYNTIQ inquiry",
+        replyTo: "sales@adyntiq.com",
+        text: `Hi ${name.trim()},
+
+Thank you for contacting ADYNTIQ. We received your inquiry about ${need.trim()} and will review the workflow or operational challenge you shared.
+
+Someone from ADYNTIQ will respond using this email address. If you need to add anything in the meantime, reply to this message or email sales@adyntiq.com.
+
+ADYNTIQ
+AI that delivers. Not just predicts.
+https://www.adyntiq.com
+`
+      });
+
+      if (confirmationError) {
+        console.error(
+          "Resend inquiry confirmation failed:",
+          confirmationError.message
+        );
+      }
+    } catch (confirmationError) {
+      console.error(
+        "Resend inquiry confirmation request failed:",
+        confirmationError instanceof Error
+          ? confirmationError.message
+          : "Unknown error"
+      );
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error(
