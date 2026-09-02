@@ -6,9 +6,10 @@ import { Logo } from "@/components/Logo";
 import { TrackedContactLink } from "@/components/TrackedContactLink";
 
 const links = [
-  ["/#services", "Services"],
+  ["/services", "Services"],
   ["/#use-cases", "Solutions"],
   ["/#process", "How it works"],
+  ["/case-studies/production-inquiry-workflow", "Case study"],
   ["/about", "About"],
 ] as const;
 
@@ -29,8 +30,8 @@ export function Header() {
           <span className="text-lg font-bold tracking-[-0.02em] text-ink">ADYNTIQ</span>
         </Link>
 
-        <div className="hidden items-center gap-7 lg:flex">
-          <nav aria-label="Main navigation" className="flex items-center gap-7">
+        <div className="hidden items-center gap-6 lg:flex">
+          <nav aria-label="Main navigation" className="flex items-center gap-6">
             {links.map(([href, label]) => (
               <Link key={href} href={href} className="text-sm font-semibold text-ink/60 transition hover:text-ink">
                 {label}

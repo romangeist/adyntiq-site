@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Message Received",
   description: "Your message has been sent to ADYNTIQ.",
+  alternates: { canonical: "/contact/thank-you" },
   robots: {
     index: false,
     follow: false

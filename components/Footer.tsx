@@ -16,7 +16,8 @@ export function Footer() {
           <div className="grid gap-3">
             <h2 className="font-semibold">Company</h2>
             <Link className={footerLinkClassName} href="/about">About</Link>
-            <Link className={footerLinkClassName} href="/#services">Services</Link>
+            <Link className={footerLinkClassName} href="/services">Services</Link>
+            <Link className={footerLinkClassName} href="/case-studies/production-inquiry-workflow">Case study</Link>
             <Link className={footerLinkClassName} href="/contact">Contact</Link>
           </div>
           <div className="grid gap-3">

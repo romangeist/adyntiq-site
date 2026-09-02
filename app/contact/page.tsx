@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 
 const description =
@@ -44,6 +45,21 @@ export default function ContactPage() {
             <p className="mt-4 text-sm leading-6 text-ink/60">
               Best for SMB and mid-market teams looking at AI strategy, automation, agents, data integration, or implementation support.
             </p>
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-black/[0.06] bg-white/70 p-6 shadow-sm backdrop-blur">
+            <p className="text-sm font-bold text-ink">What happens next</p>
+            <ol className="mt-4 grid gap-3 text-sm leading-6 text-ink/65">
+              <li><span className="font-bold text-brand">1.</span> We review the workflow and the outcome you want.</li>
+              <li><span className="font-bold text-brand">2.</span> We respond by email with focused follow-up questions.</li>
+              <li><span className="font-bold text-brand">3.</span> If there is a practical fit, we agree on the next discovery step.</li>
+            </ol>
+            <Link
+              href="/case-studies/production-inquiry-workflow"
+              className="mt-5 inline-flex min-h-11 items-center text-sm font-bold text-brand hover:underline"
+            >
+              See how this inquiry workflow works <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
 

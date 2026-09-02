@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CTA } from "@/components/CTA";
 
 const description =
@@ -109,6 +110,31 @@ export default function AboutPage() {
                 {value}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-mist/70 py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand">
+              Our evidence standard
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-5xl">
+              Show the work. Label the limits.
+            </h2>
+          </div>
+
+          <div className="rounded-[2rem] border border-black/[0.06] bg-white p-8 shadow-sm sm:p-10">
+            <p className="text-lg leading-8 text-ink/70">
+              We distinguish verified results from targets, estimates, and future measurements. Internal work is labeled as internal; client outcomes are published only when they can be supported and shared responsibly.
+            </p>
+            <Link
+              href="/case-studies/production-inquiry-workflow"
+              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-brand hover:shadow-soft"
+            >
+              Review our internal case study <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
       </section>

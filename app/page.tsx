@@ -80,7 +80,7 @@ export default function HomePage() {
                 Book an AI consultation <span aria-hidden="true">→</span>
               </TrackedContactLink>
               <Link
-                href="#services"
+                href="/services"
                 className="rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
               >
                 Explore our services
@@ -262,6 +262,43 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f7f9fc] py-24 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white shadow-[0_24px_70px_rgba(15,23,42,0.07)] lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="bg-slate p-8 text-white sm:p-10 lg:p-12">
+              <p className="eyebrow !text-blue-300">Internal case study</p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">
+                We applied the same production discipline to our own inquiry workflow.
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-7 text-white/70">
+                See how a simple contact form became a protected, validated, and measurable operating loop—with the claims limited to what was actually built and verified.
+              </p>
+              <Link
+                href="/case-studies/production-inquiry-workflow"
+                className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:bg-blue-50 hover:shadow-xl"
+              >
+                Read the verified case study <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+
+            <div className="grid gap-px bg-black/[0.06] sm:grid-cols-2">
+              {[
+                ["01", "Structured intake", "The form captures the service, company, and operational problem."],
+                ["02", "Bot verification", "Layered checks protect the workflow before delivery."],
+                ["03", "Closed-loop email", "The team receives the inquiry and the sender receives confirmation."],
+                ["04", "Transparent evidence", "Observed results are separated from metrics that still need a baseline."],
+              ].map(([number, title, detail]) => (
+                <article key={title} className="bg-white p-7 sm:p-8">
+                  <span className="text-xs font-bold tracking-[0.18em] text-brand">{number}</span>
+                  <h3 className="mt-8 text-xl font-semibold tracking-tight text-ink">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-ink/65">{detail}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
